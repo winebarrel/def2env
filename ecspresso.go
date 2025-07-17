@@ -19,7 +19,7 @@ type Ecspresso struct {
 
 func NewEcspresso(options *EcspressoOptions) (*Ecspresso, error) {
 	cliOpts := &ecspresso.CLIOptions{
-		ConfigFilePath: options.TaskDefPath,
+		ConfigFilePath: options.Config,
 	}
 
 	app, err := ecspresso.New(context.Background(), cliOpts)
