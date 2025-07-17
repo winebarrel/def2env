@@ -1,0 +1,26 @@
+version: 2
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - main: ./cmd/def2env
+    ldflags:
+      - -X main.version={{.Version}}
+      - -X main.ecspressoVersion={{index .Env "ECSPRESSO_VERSION"}}
+    env:
+      - CGO_ENABLED=0
+    goos:
+      # - linux
+      - darwin
+checksum:
+  name_template: "checksums.txt"
+nfpms:
+  - file_name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Arch }}"
+    homepage: https://github.com/winebarrel/def2env
+    description: def2env is a tool that extracts environment variables from ECS task definitions and executes commands.
+    license: MIT
+    maintainer: "Genki Sugawara <sugawara@winebarrel.jp>"
+    formats:
+      - deb
+      - rpm
+    bindir: /usr/bin
