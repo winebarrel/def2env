@@ -1,5 +1,7 @@
 # def2env
 
+[![CI](https://github.com/winebarrel/def2env/actions/workflows/ci.yml/badge.svg)](https://github.com/winebarrel/def2env/actions/workflows/ci.yml)
+
 def2env is a tool that extracts environment variables from ECS task definitions and executes commands.
 (Supports AWS Secrets Manager variable expansion)
 
