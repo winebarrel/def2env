@@ -12,7 +12,7 @@ func Run(options *Options) error {
 	ecspressoClient, err := NewEcspresso(&options.EcspressoOptions)
 
 	if err != nil {
-		return nil
+		return err
 	}
 
 	envs, err := ecspressoClient.Environ()
