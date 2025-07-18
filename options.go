@@ -9,7 +9,7 @@ type Options struct {
 	EcspressoOptions
 	EnvFile []string `short:"e" type:"existingfile" help:"A file listing environment variables to override."`
 	Command []string `arg:"" required:"" help:"Command and arguments."`
-	Only    []string `xor:"only_all" required:"" help:"A file containing a list of environment variable names to pass to the command."`
+	Only    []string `xor:"only_all" env:"DEF2ENV_ONLY" required:"" help:"A file containing a list of environment variable names to pass to the command."`
 	All     bool     `xor:"only_all" required:"" help:"Pass all environment variables to the command."`
 }
 
