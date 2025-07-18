@@ -7,12 +7,14 @@ import (
 
 type Options struct {
 	EcspressoOptions
-	EnvFile []string `short:"e" help:"Environment variable file."`
+	EnvFile []string `short:"e" type:"existingfile" help:"A file listing environment variables to override."`
 	Command []string `arg:"" required:"" help:"Command and arguments."`
+	Only    []string `xor:"only_all" required:"" help:"A file containing a list of environment variable names to pass to the command."`
+	All     bool     `xor:"only_all" required:"" help:"Pass all environment variables to the command."`
 }
 
 type EcspressoOptions struct {
-	Config       string `short:"c" default:"ecspresso.yml" help:"ecspresso config file path."`
+	Config       string `short:"c" default:"ecspresso.yml" type:"existingfile" help:"ecspresso config file path."`
 	ContainerNum uint   `short:"n" default:"0" help:"Container definition index."`
 }
 
