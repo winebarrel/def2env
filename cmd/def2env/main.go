@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"os"
 
 	"github.com/alecthomas/kong"
@@ -16,7 +15,6 @@ var (
 
 func init() {
 	ecspresso.Version = ecspressoVersion
-	log.SetFlags(0)
 }
 
 func parseArgs() *def2env.Options {
@@ -38,6 +36,7 @@ func main() {
 	err := def2env.Run(options)
 
 	if err != nil {
-		log.Fatalf("def2env error: %s", err)
+		ecspresso.LogError("def2env error: %s", err)
+		os.Exit(1)
 	}
 }

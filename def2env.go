@@ -1,11 +1,14 @@
 package def2env
 
 import (
+	"bufio"
 	"bytes"
 	"os"
 	"os/exec"
+	"strings"
 
 	"github.com/hashicorp/go-envparse"
+	"github.com/kayac/ecspresso/v2"
 )
 
 func Run(options *Options) error {
@@ -40,7 +43,40 @@ func Run(options *Options) error {
 		}
 	}
 
+	if !options.All {
+		envs = filterEnvs(envs, options.Only)
+	}
+
 	return execCmd(options.Command, envs)
+}
+
+func filterEnvs(envs map[string]string, onlyFiles []string) map[string]string {
+	newEnvs := map[string]string{}
+
+	for _, file := range onlyFiles {
+		f, err := os.Open(file)
+		if err != nil {
+			ecspresso.LogWarn("file loading skipped: %s", err)
+			continue
+		}
+
+		scanner := bufio.NewScanner(f)
+
+		for scanner.Scan() {
+			name := strings.TrimSpace(scanner.Text())
+
+			if name == "" || strings.HasPrefix(name, "#") {
+				continue
+			}
+
+			if value, ok := envs[name]; ok {
+				newEnvs[name] = value
+			}
+		}
+
+	}
+
+	return newEnvs
 }
 
 func execCmd(cmdArgs []string, extraEnv map[string]string) error {

@@ -8,7 +8,7 @@ def2env is a tool that extracts environment variables from ECS task definitions 
 ## Usage
 
 ```
-Usage: def2env <command> ... [flags]
+Usage: def2env --only=ONLY,... --all <command> ... [flags]
 
 Arguments:
   <command> ...    Command and arguments.
@@ -17,7 +17,9 @@ Flags:
   -h, --help                      Show help.
   -c, --config="ecspresso.yml"    ecspresso config file path.
   -n, --container-num=0           Container definition index.
-  -e, --env-file=ENV-FILE,...     Environment variable file.
+  -e, --env-file=ENV-FILE         A file listing environment variables to override.
+      --only=ONLY,...             A file containing a list of environment variable names to pass to the command.
+      --all                       Pass all environment variables to the command.
       --version
 ```
 
