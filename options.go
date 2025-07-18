@@ -14,7 +14,7 @@ type Options struct {
 }
 
 type EcspressoOptions struct {
-	Config       string `short:"c" default:"ecspresso.yml" type:"existingfile" help:"ecspresso config file path."`
+	Config       string `short:"c" env:"ECSPRESSO_CONFIG" default:"ecspresso.yml" type:"existingfile" help:"ecspresso config file path."`
 	ContainerNum uint   `short:"n" default:"0" help:"Container definition index."`
 }
 
