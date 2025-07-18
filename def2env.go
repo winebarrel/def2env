@@ -3,6 +3,7 @@ package def2env
 import (
 	"bufio"
 	"bytes"
+	"net/url"
 	"os"
 	"os/exec"
 	"strings"
@@ -50,30 +51,36 @@ func Run(options *Options) error {
 	return execCmd(options.Command, envs)
 }
 
-func filterEnvs(envs map[string]string, onlyFiles []string) map[string]string {
+func filterEnvs(envs map[string]string, only []string) map[string]string {
 	newEnvs := map[string]string{}
 
-	for _, file := range onlyFiles {
-		f, err := os.Open(file)
-		if err != nil {
-			ecspresso.LogWarn("file loading skipped: %s", err)
-			continue
-		}
+	for _, fileOrName := range only {
+		if u, err := url.Parse(fileOrName); err == nil && u.Scheme == "file" {
+			f, err := os.Open(u.Host)
 
-		scanner := bufio.NewScanner(f)
-
-		for scanner.Scan() {
-			name := strings.TrimSpace(scanner.Text())
-
-			if name == "" || strings.HasPrefix(name, "#") {
+			if err != nil {
+				ecspresso.LogWarn("file loading skipped: %s", err)
 				continue
 			}
 
-			if value, ok := envs[name]; ok {
-				newEnvs[name] = value
+			scanner := bufio.NewScanner(f)
+
+			for scanner.Scan() {
+				name := strings.TrimSpace(scanner.Text())
+
+				if name == "" || strings.HasPrefix(name, "#") {
+					continue
+				}
+
+				if value, ok := envs[name]; ok {
+					newEnvs[name] = value
+				}
+			}
+		} else {
+			if value, ok := envs[fileOrName]; ok {
+				newEnvs[fileOrName] = value
 			}
 		}
-
 	}
 
 	return newEnvs

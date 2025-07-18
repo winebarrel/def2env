@@ -74,24 +74,26 @@ func (*Ecspresso) appendEnvironment(environment []types.KeyValuePair, envs map[s
 }
 
 func (client *Ecspresso) appendSecrets(secrets []types.Secret, envs map[string]string) error {
-	names := []string{}
-	valueFroms := []string{}
-	values := []string{}
+	nameByArn := map[string]string{}
+	arns := []string{}
+	valueByArn := map[string]string{}
 
 	for _, s := range secrets {
-		names = append(names, *s.Name)
-		valueFroms = append(valueFroms, *s.ValueFrom)
+		name := aws.ToString(s.Name)
+		arn := aws.ToString(s.ValueFrom)
+		nameByArn[arn] = name
+		arns = append(arns, *s.ValueFrom)
 	}
 
 	for {
 		var secretIdList []string
 
-		if len(valueFroms) > 20 {
-			secretIdList = valueFroms[0:20]
-			valueFroms = valueFroms[20:]
+		if len(arns) > 20 {
+			secretIdList = arns[0:20]
+			arns = arns[20:]
 		} else {
-			secretIdList = valueFroms
-			valueFroms = nil
+			secretIdList = arns
+			arns = nil
 		}
 
 		input := &secretsmanager.BatchGetSecretValueInput{
@@ -105,16 +107,18 @@ func (client *Ecspresso) appendSecrets(secrets []types.Secret, envs map[string]s
 		}
 
 		for _, sv := range output.SecretValues {
-			values = append(values, aws.ToString(sv.SecretString))
+			value := aws.ToString(sv.SecretString)
+			arn := aws.ToString(sv.ARN)
+			valueByArn[arn] = value
 		}
 
-		if valueFroms == nil {
+		if arns == nil {
 			break
 		}
 	}
 
-	for i, n := range names {
-		envs[n] = values[i]
+	for arn, name := range nameByArn {
+		envs[name] = valueByArn[arn]
 	}
 
 	return nil
