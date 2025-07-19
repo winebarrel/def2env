@@ -15,7 +15,7 @@ Arguments:
 
 Flags:
   -h, --help                      Show help.
-  -c, --config="ecspresso.yml"    ecspresso config file path
+  -c, --config="ecspresso.yml"    ecspresso config file or directory path
                                   ($ECSPRESSO_CONFIG).
   -n, --container-num=0           Container definition index.
       --only=ONLY,...             Name of environment variable to pass to the
