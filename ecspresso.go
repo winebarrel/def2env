@@ -93,6 +93,10 @@ func (client *Ecspresso) appendSecrets(secrets []types.Secret, allowlist AllowLi
 		}
 	}
 
+	if len(arns) == 0 {
+		return nil
+	}
+
 	for {
 		var secretIdList []string
 
