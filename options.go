@@ -1,8 +1,19 @@
 package def2env
 
 import (
+	"fmt"
 	"os"
+	"path"
 	"strings"
+)
+
+var (
+	defaultEcspressoConfigs = []string{
+		"ecspresso.yml",
+		"ecspresso.yaml",
+		"ecspresso.json",
+		"ecspresso.jsonnet",
+	}
 )
 
 type Options struct {
@@ -13,7 +24,7 @@ type Options struct {
 }
 
 type EcspressoOptions struct {
-	Config       string `short:"c" env:"ECSPRESSO_CONFIG" default:"ecspresso.yml" type:"existingfile" help:"ecspresso config file path."`
+	Config       string `short:"c" env:"ECSPRESSO_CONFIG" default:"ecspresso.yml" help:"ecspresso config file or directory path."`
 	ContainerNum uint   `short:"n" default:"0" help:"Container definition index."`
 }
 
@@ -26,6 +37,29 @@ func (options *Options) AfterApply() error {
 
 	if strings.HasPrefix(options.Config, "~/") {
 		options.Config = strings.Replace(options.Config, "~", homeDir, 1)
+	}
+
+	fi, err := os.Stat(options.Config)
+
+	if err != nil {
+		return err
+	}
+
+	if fi.IsDir() {
+		var err error
+
+		for _, name := range defaultEcspressoConfigs {
+			confPath := path.Join(options.Config, name)
+
+			if _, err = os.Stat(confPath); err == nil {
+				options.Config = confPath
+				break
+			}
+		}
+
+		if err != nil {
+			return fmt.Errorf("%s: no ecspresso config file in directory", options.Config)
+		}
 	}
 
 	return nil

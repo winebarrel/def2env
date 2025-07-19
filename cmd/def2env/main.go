@@ -36,7 +36,7 @@ func main() {
 	err := def2env.Run(options)
 
 	if err != nil {
-		ecspresso.LogError("def2env error: %s", err)
+		ecspresso.LogError("def2env: error: %s", err)
 		os.Exit(1)
 	}
 }
