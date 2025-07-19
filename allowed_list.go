@@ -42,7 +42,7 @@ func NewAllowList(only []string) AllowList {
 
 	names := []string{}
 
-	for n, _ := range nameSet {
+	for n := range nameSet {
 		names = append(names, n)
 	}
 
