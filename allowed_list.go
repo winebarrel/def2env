@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"net/url"
 	"os"
+	"path"
 	"slices"
 	"strings"
 
@@ -15,16 +16,21 @@ type AllowList struct {
 	all   bool
 }
 
-func NewAllowList(options *AllowListOptions) *AllowList {
+func NewAllowList(options *AllowListOptions) (*AllowList, error) {
 	nameSet := map[string]struct{}{}
 
 	for _, fileOrName := range options.Only {
 		if u, err := url.Parse(fileOrName); err == nil && u.Scheme == "file" {
-			f, err := os.Open(u.Host)
+			filePath := path.Join(u.Host, u.Path)
+			f, err := os.Open(filePath)
 
 			if err != nil {
-				ecspresso.LogWarn("file loading skipped: %s", err)
-				continue
+				if u.Query().Get("required") == "false" {
+					ecspresso.LogWarn("file loading skipped: %s", err)
+					continue
+				} else {
+					return nil, err
+				}
 			}
 
 			scanner := bufio.NewScanner(f)
@@ -54,7 +60,7 @@ func NewAllowList(options *AllowListOptions) *AllowList {
 		all:   options.All,
 	}
 
-	return allowlist
+	return allowlist, nil
 }
 
 func (allowlist AllowList) IsAllowed(name string) bool {
