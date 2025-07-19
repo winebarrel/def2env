@@ -15,7 +15,7 @@ type AllowList struct {
 	all   bool
 }
 
-func NewAllowList(options *AllowListOptions) *AllowList {
+func NewAllowList(options *AllowListOptions) (*AllowList, error) {
 	nameSet := map[string]struct{}{}
 
 	for _, fileOrName := range options.Only {
@@ -23,8 +23,12 @@ func NewAllowList(options *AllowListOptions) *AllowList {
 			f, err := os.Open(u.Host)
 
 			if err != nil {
-				ecspresso.LogWarn("file loading skipped: %s", err)
-				continue
+				if u.Query().Get("required") == "false" {
+					ecspresso.LogWarn("file loading skipped: %s", err)
+					continue
+				} else {
+					return nil, err
+				}
 			}
 
 			scanner := bufio.NewScanner(f)
@@ -54,7 +58,7 @@ func NewAllowList(options *AllowListOptions) *AllowList {
 		all:   options.All,
 	}
 
-	return allowlist
+	return allowlist, nil
 }
 
 func (allowlist AllowList) IsAllowed(name string) bool {
