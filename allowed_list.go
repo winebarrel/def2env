@@ -44,6 +44,8 @@ func NewAllowList(options *AllowListOptions) (*AllowList, error) {
 
 				nameSet[name] = struct{}{}
 			}
+
+			f.Close()
 		} else {
 			nameSet[fileOrName] = struct{}{}
 		}
