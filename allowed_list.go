@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"net/url"
 	"os"
+	"path"
 	"slices"
 	"strings"
 
@@ -20,7 +21,8 @@ func NewAllowList(options *AllowListOptions) (*AllowList, error) {
 
 	for _, fileOrName := range options.Only {
 		if u, err := url.Parse(fileOrName); err == nil && u.Scheme == "file" {
-			f, err := os.Open(u.Host)
+			filePath := path.Join(u.Host, u.Path)
+			f, err := os.Open(filePath)
 
 			if err != nil {
 				if u.Query().Get("required") == "false" {
