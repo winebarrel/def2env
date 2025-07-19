@@ -18,8 +18,6 @@ Flags:
   -c, --config="ecspresso.yml"    ecspresso config file path
                                   ($ECSPRESSO_CONFIG).
   -n, --container-num=0           Container definition index.
-  -e, --env-file=ENV-FILE         A file listing environment variables to
-                                  override.
       --only=ONLY,...             Name of environment variable to pass to the
                                   command. Read from file if prefix is 'file://'
                                   ($DEF2ENV_ONLY).
