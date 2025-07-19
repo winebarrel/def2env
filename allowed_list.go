@@ -10,12 +10,15 @@ import (
 	"github.com/kayac/ecspresso/v2"
 )
 
-type AllowList []string
+type AllowList struct {
+	names []string
+	all   bool
+}
 
-func NewAllowList(only []string) AllowList {
+func NewAllowList(options *AllowListOptions) *AllowList {
 	nameSet := map[string]struct{}{}
 
-	for _, fileOrName := range only {
+	for _, fileOrName := range options.Only {
 		if u, err := url.Parse(fileOrName); err == nil && u.Scheme == "file" {
 			f, err := os.Open(u.Host)
 
@@ -46,9 +49,14 @@ func NewAllowList(only []string) AllowList {
 		names = append(names, n)
 	}
 
-	return names
+	allowlist := &AllowList{
+		names: names,
+		all:   options.All,
+	}
+
+	return allowlist
 }
 
 func (allowlist AllowList) IsAllowed(name string) bool {
-	return len(allowlist) == 0 || slices.Contains(allowlist, name)
+	return allowlist.all || slices.Contains(allowlist.names, name)
 }

@@ -18,14 +18,18 @@ var (
 
 type Options struct {
 	EcspressoOptions
+	AllowListOptions
 	Command []string `arg:"" required:"" help:"Command and arguments."`
-	Only    []string `xor:"only_all" env:"DEF2ENV_ONLY" required:"" help:"Name of environment variable to pass to the command. Read from file if prefix is 'file://'."`
-	All     bool     `xor:"only_all" required:"" help:"Pass all environment variables to the command."`
 }
 
 type EcspressoOptions struct {
 	Config       string `short:"c" env:"ECSPRESSO_CONFIG" default:"ecspresso.yml" help:"ecspresso config file or directory path."`
 	ContainerNum uint   `short:"n" default:"0" help:"Container definition index."`
+}
+
+type AllowListOptions struct {
+	Only []string `xor:"only_all" env:"DEF2ENV_ONLY" required:"" help:"Name of environment variable to pass to the command. Read from file if prefix is 'file://'."`
+	All  bool     `xor:"only_all" required:"" help:"Pass all environment variables to the command."`
 }
 
 func (options *Options) AfterApply() error {

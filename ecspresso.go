@@ -55,7 +55,7 @@ func NewEcspresso(options *EcspressoOptions) (*Ecspresso, error) {
 	return client, nil
 }
 
-func (client *Ecspresso) Environ(allowlist AllowList) (map[string]string, error) {
+func (client *Ecspresso) Environ(allowlist *AllowList) (map[string]string, error) {
 	envs := map[string]string{}
 	client.appendEnvironment(client.containerDef.Environment, allowlist, envs)
 	err := client.appendSecrets(client.containerDef.Secrets, allowlist, envs)
@@ -67,7 +67,7 @@ func (client *Ecspresso) Environ(allowlist AllowList) (map[string]string, error)
 	return envs, nil
 }
 
-func (*Ecspresso) appendEnvironment(environment []types.KeyValuePair, allowlist AllowList, envs map[string]string) {
+func (*Ecspresso) appendEnvironment(environment []types.KeyValuePair, allowlist *AllowList, envs map[string]string) {
 	for _, e := range environment {
 		name := aws.ToString(e.Name)
 		value := aws.ToString(e.Value)
@@ -78,7 +78,7 @@ func (*Ecspresso) appendEnvironment(environment []types.KeyValuePair, allowlist 
 	}
 }
 
-func (client *Ecspresso) appendSecrets(secrets []types.Secret, allowlist AllowList, envs map[string]string) error {
+func (client *Ecspresso) appendSecrets(secrets []types.Secret, allowlist *AllowList, envs map[string]string) error {
 	nameByArn := map[string]string{}
 	arns := []string{}
 	valueByArn := map[string]string{}

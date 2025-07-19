@@ -12,7 +12,7 @@ func Run(options *Options) error {
 		return err
 	}
 
-	allowlist := NewAllowList(options.Only)
+	allowlist := NewAllowList(&options.AllowListOptions)
 	envs, err := ecspressoClient.Environ(allowlist)
 
 	if err != nil {
