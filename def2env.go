@@ -2,13 +2,11 @@ package def2env
 
 import (
 	"bufio"
-	"bytes"
 	"net/url"
 	"os"
 	"os/exec"
 	"strings"
 
-	"github.com/hashicorp/go-envparse"
 	"github.com/kayac/ecspresso/v2"
 )
 
@@ -23,25 +21,6 @@ func Run(options *Options) error {
 
 	if err != nil {
 		return err
-	}
-
-	for _, envFile := range options.EnvFile {
-		content, err := os.ReadFile(envFile)
-
-		if err != nil {
-			return err
-		}
-
-		reader := bytes.NewReader(content)
-		envsFromFile, err := envparse.Parse(reader)
-
-		if err != nil {
-			return err
-		}
-
-		for name, value := range envsFromFile {
-			envs[name] = value
-		}
 	}
 
 	if !options.All {
