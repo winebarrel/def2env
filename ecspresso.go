@@ -55,10 +55,10 @@ func NewEcspresso(options *EcspressoOptions) (*Ecspresso, error) {
 	return client, nil
 }
 
-func (client *Ecspresso) Environ() (map[string]string, error) {
+func (client *Ecspresso) Environ(allowlist AllowList) (map[string]string, error) {
 	envs := map[string]string{}
-	client.appendEnvironment(client.containerDef.Environment, envs)
-	err := client.appendSecrets(client.containerDef.Secrets, envs)
+	client.appendEnvironment(client.containerDef.Environment, allowlist, envs)
+	err := client.appendSecrets(client.containerDef.Secrets, allowlist, envs)
 
 	if err != nil {
 		return nil, err
@@ -67,13 +67,18 @@ func (client *Ecspresso) Environ() (map[string]string, error) {
 	return envs, nil
 }
 
-func (*Ecspresso) appendEnvironment(environment []types.KeyValuePair, envs map[string]string) {
+func (*Ecspresso) appendEnvironment(environment []types.KeyValuePair, allowlist AllowList, envs map[string]string) {
 	for _, e := range environment {
-		envs[*e.Name] = *e.Value
+		name := aws.ToString(e.Name)
+		value := aws.ToString(e.Value)
+
+		if allowlist.IsAllowed(name) {
+			envs[name] = value
+		}
 	}
 }
 
-func (client *Ecspresso) appendSecrets(secrets []types.Secret, envs map[string]string) error {
+func (client *Ecspresso) appendSecrets(secrets []types.Secret, allowlist AllowList, envs map[string]string) error {
 	nameByArn := map[string]string{}
 	arns := []string{}
 	valueByArn := map[string]string{}
@@ -81,8 +86,11 @@ func (client *Ecspresso) appendSecrets(secrets []types.Secret, envs map[string]s
 	for _, s := range secrets {
 		name := aws.ToString(s.Name)
 		arn := aws.ToString(s.ValueFrom)
-		nameByArn[arn] = name
-		arns = append(arns, *s.ValueFrom)
+
+		if allowlist.IsAllowed(name) {
+			nameByArn[arn] = name
+			arns = append(arns, arn)
+		}
 	}
 
 	for {
