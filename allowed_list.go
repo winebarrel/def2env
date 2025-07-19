@@ -7,8 +7,6 @@ import (
 	"path"
 	"slices"
 	"strings"
-
-	"github.com/kayac/ecspresso/v2"
 )
 
 type AllowList struct {
@@ -26,7 +24,6 @@ func NewAllowList(options *AllowListOptions) (*AllowList, error) {
 
 			if err != nil {
 				if u.Query().Get("required") == "false" {
-					ecspresso.LogWarn("file loading skipped: %s", err)
 					continue
 				} else {
 					return nil, err
