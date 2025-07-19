@@ -37,6 +37,6 @@ $ grep environment -A 2 ecs-task-def.jsonnet
   environment: [
     { name: 'USERNAME', value: 'scott' },
 
-$ def2env --all -- bash -c 'echo $USERNAME'
+$ def2env --only USERNAME -- bash -c 'echo $USERNAME'
 scott
 ```
