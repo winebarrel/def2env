@@ -267,8 +267,8 @@ github.com/jmespath/go-jmespath v0.4.0/go.mod h1:T8mJZnbsbmF+m6zOOFylbeCJqk5+pHW
 github.com/jmespath/go-jmespath/internal/testify v1.5.1 h1:shLQSRRSCCPj3f2gpwzGwWFoC7ycTf1rcQZHOlsJ6N8=
 github.com/jmespath/go-jmespath/internal/testify v1.5.1/go.mod h1:L3OGu8Wl2/fWfCI6z80xFu9LTZmf1ZRjMHUOPmWr69U=
 github.com/k0kubun/go-ansi v0.0.0-20180517002512-3bf9e2903213/go.mod h1:vNUNkEQ1e29fT/6vq2aBdFsgNPmy8qMdSay1npru+Sw=
-github.com/kayac/ecspresso/v2 v2.6.0 h1:5aGdy+XHEzVJUoNrgKe7R16JyMcJvEhB/YdUgAYNuSc=
-github.com/kayac/ecspresso/v2 v2.6.0/go.mod h1:4k7V9LVKvKvrHaAsoHEDXvD2mPGUQKkQISpmU7UOiVE=
+github.com/kayac/ecspresso/v2 v2.6.1 h1:6CxfOJUhKwtTuaD//pRNes1XxZmKQaazWTAp07a8/4U=
+github.com/kayac/ecspresso/v2 v2.6.1/go.mod h1:KEcUQ+ksOVGaZuCTGwQ3EY33DdfTlI3PSiHrpTdwjoc=
 github.com/kayac/go-config v0.7.0 h1:BeONaFFq/ILFiEzkCMpKarsjcc3YBgJ7QKg39hXU+nk=
 github.com/kayac/go-config v0.7.0/go.mod h1:Nfkw4LZOh/7HGepftBvD2lKEpPyl1Vp89yA7gDJS5r0=
 github.com/keybase/go-keychain v0.0.0-20231219164618-57a3676c3af6 h1:IsMZxCuZqKuao2vNdfD82fjjgPLfyHLpR41Z88viRWs=

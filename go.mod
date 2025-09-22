@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.31.8
 	github.com/aws/aws-sdk-go-v2/service/ecs v1.64.0
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.39.4
-	github.com/kayac/ecspresso/v2 v2.6.0
+	github.com/kayac/ecspresso/v2 v2.6.1
 )
 
 require (
