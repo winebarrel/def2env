@@ -6,7 +6,7 @@ require (
 	github.com/alecthomas/kong v1.12.1
 	github.com/aws/aws-sdk-go-v2 v1.39.6
 	github.com/aws/aws-sdk-go-v2/config v1.31.19
-	github.com/aws/aws-sdk-go-v2/service/ecs v1.67.3
+	github.com/aws/aws-sdk-go-v2/service/ecs v1.67.4
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.39.12
 	github.com/kayac/ecspresso/v2 v2.6.3
 )
