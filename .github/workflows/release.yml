@@ -22,7 +22,7 @@ jobs:
       - name: Get ecspresso version
         run: echo "ECSPRESSO_VERSION=$(awk '/ecspresso/{print $2}' go.mod)" >> $GITHUB_ENV
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         with:
           distribution: goreleaser
           version: "~> v2"
