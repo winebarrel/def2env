@@ -130,8 +130,8 @@ github.com/aws/aws-sdk-go-v2/service/lambda v1.90.1 h1:odCeJgHXfQoXEWQUIzPkKvsJT
 github.com/aws/aws-sdk-go-v2/service/lambda v1.90.1/go.mod h1:NbtJVztitG7JkuoI4GSrDUlsB32zeXqKBvXj6bUxcMo=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.100.1 h1:mxuT1xE+dI54NW3RkNjP8DUT5HXqbkiAFvfdyDFwE5c=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.100.1/go.mod h1:L2dcoOgS2VSgbPLvpak2NyUPsO1TBN7M45Z4H7DlRc4=
-github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.42.3 h1:L9gPLf3sFH1/ao3oB2QZcaX1xGYi8hj+WJlsf3/dN+M=
-github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.42.3/go.mod h1:9DKRlwDCw2OUDlyCIFcQCroL5M0mQTUU9qW8JEDcXmI=
+github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.42.4 h1:XHVMX+j7tHjbPD9uaT2Do4l8JRxWhHWqbMvTRsLI5wM=
+github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.42.4/go.mod h1:9DKRlwDCw2OUDlyCIFcQCroL5M0mQTUU9qW8JEDcXmI=
 github.com/aws/aws-sdk-go-v2/service/servicediscovery v1.39.28 h1:wd35f7+1mwPV22PENB9ZnWjdvYcDrfytyVspMo02JYQ=
 github.com/aws/aws-sdk-go-v2/service/servicediscovery v1.39.28/go.mod h1:1lUDU6qw3e5FKsegwe+hZZJJXUjg8/L/szYUgVih8yM=
 github.com/aws/aws-sdk-go-v2/service/signin v1.2.1 h1:BeJmkm5YOZs6lGRGcNoIuLSoTTtGLLCEqlSiRKYodfM=
