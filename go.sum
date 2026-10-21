@@ -111,8 +111,8 @@ github.com/aws/aws-sdk-go-v2/service/codedeploy v1.38.5 h1:FNmfATN/Cy36jswLrS4wh
 github.com/aws/aws-sdk-go-v2/service/codedeploy v1.38.5/go.mod h1:9me4fM7/jF8nEf1HsP8V8clxRHVOucEu0pbkWvW5YGk=
 github.com/aws/aws-sdk-go-v2/service/ecr v1.60.5 h1:ft7DMzCb1eHoJgjcupW/wc/kDLQ+rEX1vezAEELQlOM=
 github.com/aws/aws-sdk-go-v2/service/ecr v1.60.5/go.mod h1:U3M6X8k67rGWURiJVFbCcStvupDc44wq+HoLBEaK/is=
-github.com/aws/aws-sdk-go-v2/service/ecs v1.100.3 h1:GjuFwluSUe4XNiZjFpKvQI3te7PAsrrv9V7zPHMWGPk=
-github.com/aws/aws-sdk-go-v2/service/ecs v1.100.3/go.mod h1:6SgP8Uxeur6i0CsNeRBZQspNH5R8atwoG1+To27rkmQ=
+github.com/aws/aws-sdk-go-v2/service/ecs v1.102.0 h1:vAy42FJg9NS2pV7ok2vqdWHXV3gnmnjJw23+mMbQ4hI=
+github.com/aws/aws-sdk-go-v2/service/ecs v1.102.0/go.mod h1:6SgP8Uxeur6i0CsNeRBZQspNH5R8atwoG1+To27rkmQ=
 github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2 v1.58.6 h1:P2KzXoV/LpmGl606LpYoOic/sIJZ2rK3ISb0gq55fcI=
 github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2 v1.58.6/go.mod h1:g7QiYmqwcRBEzNv4wEF1A6iBPFqyo7CottPV9Cy4KuI=
 github.com/aws/aws-sdk-go-v2/service/iam v1.59.0 h1:IHFV2oimyMi4RhjWdgzxLaMg+jOk0joaBNSGX6+wqB4=
@@ -130,8 +130,8 @@ github.com/aws/aws-sdk-go-v2/service/lambda v1.101.3 h1:JxKvYBJCfQ+v2IDHxoE9TAjP
 github.com/aws/aws-sdk-go-v2/service/lambda v1.101.3/go.mod h1:Sib34fFU1S2xI6Ft3xEdhCjwKoh3z5GREnIGAOYVXos=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.107.1 h1:VUTtUJMuRNMkb/7NIKmd8NQaeQLPGCMoTJxkYKre4qM=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.107.1/go.mod h1:WvUaO0lP5GNMs1R6cs6qvB3mqo16GLta8yfOuf55Rpc=
-github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.50.4 h1:+qOKY5eW7mwAEUWoIEtNR2qj351eOWMo+nglB+AhCQU=
-github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.50.4/go.mod h1:1C6Uc76IPws0N2nYeWJKxNoabSXbTdkDpAUnqAz4VCI=
+github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.50.5 h1:LYKM07Ka9BIxjfTweMxP5iMZj98swlMVcL8RVn/sMDk=
+github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.50.5/go.mod h1:1C6Uc76IPws0N2nYeWJKxNoabSXbTdkDpAUnqAz4VCI=
 github.com/aws/aws-sdk-go-v2/service/servicediscovery v1.43.5 h1:FbW6sbtfSObRHJqubw+LrMrGu/mzBMsgtpVgjhI5Mac=
 github.com/aws/aws-sdk-go-v2/service/servicediscovery v1.43.5/go.mod h1:RFFq6M97fuNWps6tQ3FHOmcDEYnbp4o3hhfrcpw2NAw=
 github.com/aws/aws-sdk-go-v2/service/signin v1.10.4 h1:tvpDjuUvgKURf3Yk4hOaGbZ4QdY+070OWcA5d6LUv2A=
