@@ -83,7 +83,7 @@ require (
 	github.com/fujiwara/ssm-lookup v0.1.1 // indirect
 	github.com/fujiwara/tfstate-lookup v1.12.1 // indirect
 	github.com/fujiwara/tracer v1.1.3 // indirect
-	github.com/go-jose/go-jose/v4 v4.1.4 // indirect
+	github.com/go-jose/go-jose/v4 v4.1.6 // indirect
 	github.com/go-logr/logr v1.4.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/goccy/go-json v0.10.6 // indirect
