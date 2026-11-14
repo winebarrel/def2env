@@ -1,6 +1,6 @@
 module github.com/winebarrel/def2env
 
-go 1.26.0
+go 1.27.0
 
 require (
 	github.com/alecthomas/kong v1.17.0
@@ -9,6 +9,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ecs v1.105.1
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.51.0
 	github.com/kayac/ecspresso/v2 v2.8.9
+	github.com/kayac/ecspresso/v3 v3.0.0
 )
 
 require (
